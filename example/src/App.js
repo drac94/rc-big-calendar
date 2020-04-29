@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { ExampleComponent } from 'rc-big-calendar'
+import { Calendar } from 'rc-big-calendar'
 import 'rc-big-calendar/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <div className='app-main'>
+      <Calendar />
+    </div>
+  )
 }
 
 export default App

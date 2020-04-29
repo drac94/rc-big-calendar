@@ -13,18 +13,27 @@ npm install --save rc-big-calendar
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'rc-big-calendar'
-import 'rc-big-calendar/dist/index.css'
+import Calendar from 'rc-big-calendar'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const Example = () => {
+    return <Calendar />
 }
 ```
 
+
+### Props
+
+- `renderDay - ?Func` - Callback function - (day, startDate, endDate)
+- `previousButton -?Component` 
+- `nextButton -?Component` 
+- `onMonthChange - ?Func` - Callback function - (month)
+- `mobileBreakpoint ?Number` - The screen width where it would switch to the mobile styles
+
+
 ## License
 
-MIT © [drac94](https://github.com/drac94)
+Licensed under the MIT License, Copyright © 2020-present Luis Guerrero [drac94](https://github.com/drac94).
+
+See [LICENSE](./LICENSE) for more information.
