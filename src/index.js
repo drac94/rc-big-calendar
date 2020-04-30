@@ -28,7 +28,7 @@ import {
   Month
 } from './index.styled'
 
-export const Calendar = (props) => {
+const Calendar = (props) => {
   const {
     renderDay,
     previousButton,
@@ -123,3 +123,5 @@ export const Calendar = (props) => {
     </Container>
   )
 }
+
+export default Calendar

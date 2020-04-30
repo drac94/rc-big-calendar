@@ -1,7 +1,7 @@
 {
   "name": "rc-big-calendar",
-  "version": "1.0.0",
-  "description": "A React component google calendar like responsive with support for customized cells",
+  "version": "1.0.2",
+  "description": "A lightweight calendar React component built with grid and flexbox",
   "author": "drac94",
   "license": "MIT",
   "repository": "drac94/rc-big-calendar",
