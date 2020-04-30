@@ -1,8 +1,11 @@
 # rc-big-calendar
 
-> A React component google calendar like responsive with support for customized cells
+> A lightweight calendar React component built with grid and flexbox.
 
 [![NPM](https://img.shields.io/npm/v/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
+[![npm](https://img.shields.io/npm/dt/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar)
+[![npm](https://img.shields.io/npm/dw/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar)
 
 ## Install
 
@@ -14,22 +17,31 @@ npm install --save rc-big-calendar
 
 ```jsx
 import React from 'react'
-
 import Calendar from 'rc-big-calendar'
 
-const Example = () => {
-    return <Calendar />
+const myCustomRender = (day) => {
+    return <div>Example</div>
 }
+
+const MyView = props => (
+    <Calendar
+      renderDay={myCustomRender}
+      previousButton={<span> 👈 </span>}
+      nextButton={<span> 👉 </span>}
+      onMonthChange={handleMonthChange}
+      mobileBreakpoint={600} 
+    />
+)
 ```
 
 
 ### Props
 
-- `renderDay - ?Func` - Callback function - (day, startDate, endDate)
+- `renderDay - ?Func` - Callback function - (currentDay: Date, startDate: Date, endDate: Date)
 - `previousButton -?Component` 
 - `nextButton -?Component` 
-- `onMonthChange - ?Func` - Callback function - (month)
-- `mobileBreakpoint ?Number` - The screen width where it would switch to the mobile styles
+- `onMonthChange - ?Func` - Callback function - (currentMonth: Date, startDate: Date, endDate: Date)
+- `mobileBreakpoint ?Number` - The screen width when to switch to mobile styles
 
 
 ## License
