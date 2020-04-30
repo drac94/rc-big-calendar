@@ -34,6 +34,10 @@ const MyView = props => (
 )
 ```
 
+![image](https://user-images.githubusercontent.com/1719915/80731993-480f9480-8ad1-11ea-920f-39e3f2de8bec.png)
+
+![image](https://user-images.githubusercontent.com/1719915/80732095-71302500-8ad1-11ea-9d2c-919336eaa5c0.png)
+
 
 ### Props
 
