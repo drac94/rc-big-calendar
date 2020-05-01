@@ -1,4 +1,6 @@
-# rc-big-calendar
+![image](https://user-images.githubusercontent.com/1719915/80829582-0ce29380-8bad-11ea-9c61-dd8e4d47f268.png)
+
+# React Big Calendar
 
 > A lightweight calendar React component built with grid and flexbox.
 
@@ -37,16 +39,56 @@ const MyView = props => (
 
 ### Props
 
-- `renderDay - ?Func` - Callback function - (currentDay: Date, startDate: Date, endDate: Date)
-- `previousButton -?Component` 
-- `nextButton -?Component` 
-- `onMonthChange - ?Func` - Callback function - (currentMonth: Date, startDate: Date, endDate: Date)
-- `mobileBreakpoint ?Number` - The screen width when to switch to mobile styles
+- `renderDay: Function(currentDay: Date, startDate: Date, endDate: Date)`
+  - **Optional**
+  - The custom renderer function for every day in the calendar.
 
-### Output
-![image](https://user-images.githubusercontent.com/1719915/80731993-480f9480-8ad1-11ea-920f-39e3f2de8bec.png)
+- `previousButton: String | Component` 
+  - **Optional**
+  - The button to navigate to the previous month.
 
-![image](https://user-images.githubusercontent.com/1719915/80732095-71302500-8ad1-11ea-9d2c-919336eaa5c0.png)
+- `nextButton: String | Component` 
+  - **Optional**
+  - The button to navigate to the next month.
+
+- `currentDayColor: String` 
+  - **Optional**
+  - The color of the current day header.
+  - It can be any string you can put in background-color.
+  - Default value: '#1a73e8'
+
+- `onMonthChange: Function(currentDay: Date, startDate: Date, endDate: Date)`
+  - **Optional**
+  - The callback function to be called when clicking the next and previous buttons.
+
+- `mobileBreakpoint: Number` 
+  - **Optional**
+  - The minimum screen width in pixels to apply the mobile styles.
+  - Default value: '900'
+
+- `headerDateFormat: String` 
+  - **Optional**
+  - The format of the date in the header of the calendar.
+  - Default value: 'MMMM YYYY'
+
+- `enabledDayDateFormat: String` 
+  - **Optional**
+  - The format of the date in the header of each day of the current month.
+  - Default value: 'D'
+
+- `disabledDayDateFormat: String` 
+  - **Optional**
+  - The format of the date in the header of each day that appears in the calendar but that is not part of the current month.
+  - Default value: 'MMM D'
+
+For date formating please refer to the [date-fns](https://date-fns.org/v1.28.5/docs/format) docs.
+
+## Changelog
+
+### 1.0.3
+
+- Added support for date formatting.
+- Added support for current day header color.
 
 ## License
 

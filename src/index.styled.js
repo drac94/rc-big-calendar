@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components'
 
-export const selectedStyles = (selected) => {
+export const selectedStyles = (selected, currentDayColor) => {
+  console.log(currentDayColor)
   if (selected)
     return css`
       color: #fff;
-      background: #1a73e8;
+      background: ${currentDayColor || '#1a73e8'};
       border-radius: 50%;
     `
 }
@@ -66,7 +67,7 @@ export const DayNumber = styled.div`
   line-height: 16px;
   min-height: 24px;
   min-width: 24px;
-  ${(props) => selectedStyles(props.selected)};
+  ${(props) => selectedStyles(props.selected, props.currentDayColor)};
 `
 
 export const DayBody = styled.div`
@@ -106,46 +107,34 @@ export const Container = styled.div`
   ${(props) => `
     @media only screen and (max-width: ${props.breakpoint}px) {
       height: auto;
-    }
-
-    ${DayNamesWrapper} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
-        visibility: hidden;
-      }
-    }
-
-    ${DaysWrapper} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
+      ${DaysWrapper} {
         display: flex;
         flex-direction: column;
       }
-    }
 
-    ${Day} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
+      ${DayNamesWrapper} {
+        visibility: hidden;
+      }
+
+      ${Day} {
         overflow: initial;
         min-height: 60px;
       }
-    }
     
     ${NavButtonRight} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
         grid-column: 3;
-      }
     }
     
     ${Month} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
         grid-column: 2;
         grid-row: 1;
         text-align: center;
         margin: 0;
-      }
     }
     
     ${Header} {
-      @media only screen and (max-width: ${props.breakpoint}px) {
         grid-template-columns: 48px auto 48px;
-      }
-    }`}
+    }
+    
+  }`}
 `

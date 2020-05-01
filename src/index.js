@@ -34,43 +34,37 @@ const Calendar = (props) => {
     previousButton,
     nextButton,
     onMonthChange,
-    mobileBreakpoint = 900
+    mobileBreakpoint = 900,
+    headerDateFormat = 'MMMM YYYY',
+    enabledDayDateFormat = 'D',
+    disabledDayDateFormat = 'MMM D',
+    currentDayColor
   } = props
-  const headerDateFormat = 'MMMM YYYY'
   const today = new Date()
   const [currentMonth, setCurrentMonth] = useState(new Date())
 
-  const getDates = (month) => {
-    const monthStart = startOfMonth(month)
-    const monthEnd = endOfMonth(monthStart)
-    const startDate = startOfWeek(monthStart)
-    const endDate = endOfWeek(monthEnd)
-
-    return {
-      monthStart,
-      monthEnd,
-      startDate,
-      endDate
-    }
-  }
+  const monthStart = startOfMonth(currentMonth)
+  const monthEnd = endOfMonth(monthStart)
+  const startDate = startOfWeek(monthStart)
+  const endDate = endOfWeek(monthEnd)
 
   const Days = ({ renderDay }) => {
-    const { monthStart, monthEnd, startDate, endDate } = getDates(currentMonth)
-
-    const dayFormat = 'D'
-    const monthDayFormat = 'MMM D'
-
-    let days = []
+    const days = []
     let day = startDate
 
     while (day <= endDate) {
       const dayNumber = isWithinRange(day, monthStart, monthEnd)
-        ? format(day, dayFormat)
-        : format(day, monthDayFormat)
+        ? format(day, enabledDayDateFormat)
+        : format(day, disabledDayDateFormat)
       days.push(
         <Day key={day}>
           <DayNumberWrapper>
-            <DayNumber selected={isSameDay(day, today)}>{dayNumber}</DayNumber>
+            <DayNumber
+              selected={isSameDay(day, today)}
+              currentDayColor={currentDayColor}
+            >
+              {dayNumber}
+            </DayNumber>
           </DayNumberWrapper>
           {renderDay && <DayBody>{renderDay(day, startDate, endDate)}</DayBody>}
         </Day>
@@ -103,7 +97,6 @@ const Calendar = (props) => {
   }
 
   const monthChangeCallback = (currentMonth) => {
-    const { startDate, endDate } = getDates(currentMonth)
     onMonthChange(currentMonth, startDate, endDate)
   }
 
@@ -111,10 +104,10 @@ const Calendar = (props) => {
     <Container breakpoint={mobileBreakpoint}>
       <Header>
         <NavButtonLeft onClick={() => prevMonth()}>
-          {previousButton ? previousButton : 'prev'}
+          {previousButton || '<'}
         </NavButtonLeft>
         <NavButtonRight onClick={() => nextMonth()}>
-          {nextButton ? nextButton : 'next'}
+          {nextButton || '>'}
         </NavButtonRight>
         <Month>{format(currentMonth, headerDateFormat)}</Month>
       </Header>
