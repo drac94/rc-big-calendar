@@ -3,6 +3,10 @@
   "version": "1.0.3",
   "description": "A lightweight calendar React component built with grid and flexbox",
   "author": "drac94",
+  "keywords": [
+    "calendar",
+    "react"
+  ],
   "license": "MIT",
   "repository": "drac94/rc-big-calendar",
   "main": "dist/index.js",

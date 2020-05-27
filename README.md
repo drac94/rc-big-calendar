@@ -2,12 +2,15 @@
 
 # React Big Calendar
 
-> A lightweight calendar React component built with grid and flexbox.
+> A lightweight Google Calendar like React Component built with grid and flexbox.
 
 [![NPM](https://img.shields.io/npm/v/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar)
 [![npm](https://img.shields.io/npm/dw/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar)
+
+## Demo
+[Demo](https://www.luisguerrero.me/rc-big-calendar/)
 
 ## Install
 
