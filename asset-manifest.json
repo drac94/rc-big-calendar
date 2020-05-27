@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rc-big-calendar/static/css/main.b66b8f08.chunk.css",
+    "main.js": "/rc-big-calendar/static/js/main.3d34c5cf.chunk.js",
+    "main.js.map": "/rc-big-calendar/static/js/main.3d34c5cf.chunk.js.map",
+    "runtime-main.js": "/rc-big-calendar/static/js/runtime-main.ce570503.js",
+    "runtime-main.js.map": "/rc-big-calendar/static/js/runtime-main.ce570503.js.map",
+    "static/js/2.a2c9186c.chunk.js": "/rc-big-calendar/static/js/2.a2c9186c.chunk.js",
+    "static/js/2.a2c9186c.chunk.js.map": "/rc-big-calendar/static/js/2.a2c9186c.chunk.js.map",
+    "index.html": "/rc-big-calendar/index.html",
+    "precache-manifest.dc08ebc34248b17d8da7b2d463ac580a.js": "/rc-big-calendar/precache-manifest.dc08ebc34248b17d8da7b2d463ac580a.js",
+    "service-worker.js": "/rc-big-calendar/service-worker.js",
+    "static/css/main.b66b8f08.chunk.css.map": "/rc-big-calendar/static/css/main.b66b8f08.chunk.css.map",
+    "static/js/2.a2c9186c.chunk.js.LICENSE.txt": "/rc-big-calendar/static/js/2.a2c9186c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce570503.js",
+    "static/js/2.a2c9186c.chunk.js",
+    "static/css/main.b66b8f08.chunk.css",
+    "static/js/main.3d34c5cf.chunk.js"
+  ]
+}
