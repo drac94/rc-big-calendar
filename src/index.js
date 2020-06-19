@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './styles.module.css'
 import {
   addDays,
   addMonths,
@@ -13,21 +14,6 @@ import {
   endOfWeek
 } from 'date-fns'
 
-import {
-  Container,
-  Header,
-  DaysWrapper,
-  Day,
-  DayNamesWrapper,
-  DayName,
-  DayNumber,
-  DayNumberWrapper,
-  DayBody,
-  NavButtonLeft,
-  NavButtonRight,
-  Month
-} from './index.styled'
-
 const Calendar = (props) => {
   const {
     renderDay,
@@ -36,12 +22,13 @@ const Calendar = (props) => {
     onMonthChange,
     mobileBreakpoint = 900,
     headerDateFormat = 'MMMM YYYY',
-    enabledDayDateFormat = 'D',
-    disabledDayDateFormat = 'MMM D',
-    currentDayColor
+    borderColor = '#dadce0'
   } = props
   const today = new Date()
   const [currentMonth, setCurrentMonth] = useState(new Date())
+
+  const enabledDayDateFormat = 'D'
+  const disabledDayDateFormat = 'MMM D'
 
   const monthStart = startOfMonth(currentMonth)
   const monthEnd = endOfMonth(monthStart)
@@ -52,37 +39,67 @@ const Calendar = (props) => {
     const days = []
     let day = startDate
 
-    while (day <= endDate) {
-      const dayNumber = isWithinRange(day, monthStart, monthEnd)
+    const getDayNumber = () =>
+      isWithinRange(day, monthStart, monthEnd)
         ? format(day, enabledDayDateFormat)
         : format(day, disabledDayDateFormat)
+
+    while (day <= endDate) {
       days.push(
-        <Day key={day}>
-          <DayNumberWrapper>
-            <DayNumber
-              selected={isSameDay(day, today)}
-              currentDayColor={currentDayColor}
-            >
-              {dayNumber}
-            </DayNumber>
-          </DayNumberWrapper>
-          {renderDay && <DayBody>{renderDay(day, startDate, endDate)}</DayBody>}
-        </Day>
+        <div
+          className={styles.day}
+          style={{ borderColor: borderColor }}
+          key={day}
+        >
+          {renderDay ? (
+            renderDay(day, startDate, endDate)
+          ) : (
+            <React.Fragment>
+              <div className={styles.dayNumberWrapper}>
+                <div
+                  className={
+                    isSameDay(day, today)
+                      ? `${styles.dayNumber} ${styles.selected}`
+                      : styles.dayNumber
+                  }
+                >
+                  {getDayNumber()}
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+        </div>
       )
       day = addDays(day, 1)
     }
     const rows = Math.ceil(differenceInDays(endDate, startDate) / 7)
-    return <DaysWrapper rows={rows}>{days}</DaysWrapper>
+    return (
+      <div
+        className={styles.daysWrapper}
+        style={{ gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))` }}
+      >
+        {days}
+      </div>
+    )
   }
 
   const DayNames = () => {
     const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     return (
-      <DayNamesWrapper>
+      <div
+        className={styles.dayNamesWrapper}
+        style={{ borderColor: borderColor }}
+      >
         {days.map((value, index) => (
-          <DayName key={index}>{value}</DayName>
+          <div
+            className={styles.dayName}
+            style={{ borderColor: borderColor }}
+            key={index}
+          >
+            {value}
+          </div>
         ))}
-      </DayNamesWrapper>
+      </div>
     )
   }
 
@@ -101,19 +118,25 @@ const Calendar = (props) => {
   }
 
   return (
-    <Container breakpoint={mobileBreakpoint}>
-      <Header>
-        <NavButtonLeft onClick={() => prevMonth()}>
+    <div
+      className={styles.container}
+      style={{ borderColor: borderColor }}
+      breakpoint={mobileBreakpoint}
+    >
+      <div className={styles.header} style={{ borderColor: borderColor }}>
+        <div className={styles.navButtonLeft} onClick={() => prevMonth()}>
           {previousButton || '<'}
-        </NavButtonLeft>
-        <NavButtonRight onClick={() => nextMonth()}>
+        </div>
+        <div className={styles.navButtonRight} onClick={() => nextMonth()}>
           {nextButton || '>'}
-        </NavButtonRight>
-        <Month>{format(currentMonth, headerDateFormat)}</Month>
-      </Header>
+        </div>
+        <div className={styles.month}>
+          {format(currentMonth, headerDateFormat)}
+        </div>
+      </div>
       <DayNames />
       <Days renderDay={renderDay} />
-    </Container>
+    </div>
   )
 }
 
