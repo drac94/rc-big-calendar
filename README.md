@@ -10,6 +10,7 @@
 [![npm](https://img.shields.io/npm/dw/rc-big-calendar.svg)](https://www.npmjs.com/package/rc-big-calendar)
 
 ## Demo
+
 [Demo](https://www.luisguerrero.me/rc-big-calendar/)
 
 ## Install
@@ -25,68 +26,79 @@ import React from 'react'
 import Calendar from 'rc-big-calendar'
 
 const myCustomRender = (day) => {
-    return <div>Example</div>
+  return <div>Example</div>
 }
 
-const MyView = props => (
-    <Calendar
-      renderDay={myCustomRender}
-      previousButton={<span> 👈 </span>}
-      nextButton={<span> 👉 </span>}
-      onMonthChange={handleMonthChange}
-      mobileBreakpoint={600} 
-    />
+const MyView = (props) => (
+  <Calendar
+    renderDay={myCustomRender}
+    previousButton={<span> 👈 </span>}
+    nextButton={<span> 👉 </span>}
+    onMonthChange={handleMonthChange}
+  />
 )
 ```
 
-
 ### Props
 
-- `renderDay: Function(currentDay: Date, startDate: Date, endDate: Date)`
+- `renderDay: Function(currentDay: Date, startDate: Date, endDate: Date, isToday: boolean)`
+
   - **Optional**
   - The custom renderer function for every day in the calendar.
 
-- `previousButton: String | Component` 
+- `previousButton: String | Component`
+
   - **Optional**
   - The button to navigate to the previous month.
 
-- `nextButton: String | Component` 
+- `nextButton: String | Component`
   - **Optional**
   - The button to navigate to the next month.
 
-- `currentDayColor: String` 
-  - **Optional**
-  - The color of the current day header.
-  - It can be any string you can put in background-color.
-  - Default value: '#1a73e8'
+* `onMonthChange: Function(currentDay: Date, startDate: Date, endDate: Date)`
 
-- `onMonthChange: Function(currentDay: Date, startDate: Date, endDate: Date)`
   - **Optional**
   - The callback function to be called when clicking the next and previous buttons.
 
-- `mobileBreakpoint: Number` 
-  - **Optional**
-  - The minimum screen width in pixels to apply the mobile styles.
-  - Default value: '900'
+* `isMobile: Boolean`
 
-- `headerDateFormat: String` 
+  - **Optional**
+  - Whether to apply the mobile styles or not.
+  - Default value: false
+
+* `headerDateFormat: String`
+
   - **Optional**
   - The format of the date in the header of the calendar.
   - Default value: 'MMMM YYYY'
 
-- `enabledDayDateFormat: String` 
-  - **Optional**
-  - The format of the date in the header of each day of the current month.
-  - Default value: 'D'
+* `headerColor: String`
 
-- `disabledDayDateFormat: String` 
   - **Optional**
-  - The format of the date in the header of each day that appears in the calendar but that is not part of the current month.
-  - Default value: 'MMM D'
+  - The color of the date in the header of the calendar.
+  - Default value: '#3c4043'
+
+* `borderColor: String`
+
+  - **Optional**
+  - The color of the borders.
+  - Default value: '#dadce0'
+
+* `dayNameColor: String`
+  - **Optional**
+  - The color of theday name (MON, TUE....).
+  - Default value: '#70757a'
 
 For date formating please refer to the [date-fns](https://date-fns.org/v1.28.5/docs/format) docs.
 
 ## Changelog
+
+### 1.0.4
+
+- Remove styled-components dependency.
+- Previously only the content of the cell could be controlled and not the header, now the render callback allows you to render the whole cell.
+- Removed props for formatting the header of the cell since now you can render your own header with your own styles.
+- Changed mobileBreakpoint by isMobile for more control on when to change to mobile styles
 
 ### 1.0.3
 

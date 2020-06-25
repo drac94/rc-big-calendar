@@ -1,6 +1,6 @@
 {
   "name": "rc-big-calendar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A lightweight calendar React component built with grid and flexbox",
   "author": "drac94",
   "keywords": [
@@ -57,7 +57,6 @@
     "dist"
   ],
   "dependencies": {
-    "date-fns": "^1.29.0",
-    "styled-components": "^5.1.0"
+    "date-fns": "^1.29.0"
   }
 }

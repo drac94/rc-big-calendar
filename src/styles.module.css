@@ -1,0 +1,135 @@
+.day {
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: 60px 20px minmax(0, 1fr);
+  border-left: 1px solid;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 48px 48px auto;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-right: 1px solid;
+  border-top: 1px solid;
+}
+
+.month {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 28px;
+  white-space: nowrap;
+  margin-left: 24px;
+  grid-column: 3;
+}
+
+.navButtonLeft {
+  padding: 4px;
+  cursor: pointer;
+  grid-column: 1;
+}
+
+.navButtonRight {
+  padding: 4px;
+  cursor: pointer;
+  grid-column: 2;
+}
+
+.dayNamesWrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid;
+}
+
+.daysWrapper {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.dayName {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  border-right: 1px solid;
+}
+
+.dayNumberWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+}
+
+.dayNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: #70757a;
+  line-height: 16px;
+  min-height: 24px;
+  min-width: 24px;
+}
+
+.selected {
+  color: #fff;
+  background: #1a73e8;
+  border-radius: 50%;
+}
+
+.containerMobile {
+  composes: container;
+  overflow: scroll;
+}
+
+.daysWrapperMobile {
+  composes: daysWrapper;
+  display: flex;
+  flex-direction: column;
+}
+
+.dayNamesWrapperMobile {
+  composes: dayNamesWrapper;
+  visibility: hidden;
+}
+
+.dayMobile {
+  composes: day;
+  overflow: initial;
+  min-height: 60px;
+}
+
+.navButtonRightMobile {
+  composes: navButtonRight;
+  grid-column: 3;
+}
+
+.monthMobile {
+  composes: month;
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.headerMobile {
+  composes: header;
+  grid-template-columns: 48px auto 48px;
+}
