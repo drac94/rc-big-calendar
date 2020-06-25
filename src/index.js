@@ -20,9 +20,11 @@ const Calendar = (props) => {
     previousButton,
     nextButton,
     onMonthChange,
-    mobileBreakpoint = 900,
+    isMobile = false,
     headerDateFormat = 'MMMM YYYY',
-    borderColor = '#dadce0'
+    borderColor = '#dadce0',
+    dayNameColor = '#70757a',
+    headerColor = '#3c4043'
   } = props
   const today = new Date()
   const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -47,12 +49,18 @@ const Calendar = (props) => {
     while (day <= endDate) {
       days.push(
         <div
-          className={styles.day}
+          className={isMobile ? styles.dayMobile : styles.day}
           style={{ borderColor: borderColor }}
           key={day}
         >
           {renderDay ? (
-            renderDay(day, startDate, endDate)
+            renderDay(
+              day,
+              startDate,
+              endDate,
+              isSameDay(day, today),
+              isWithinRange(day, monthStart, monthEnd)
+            )
           ) : (
             <React.Fragment>
               <div className={styles.dayNumberWrapper}>
@@ -75,7 +83,7 @@ const Calendar = (props) => {
     const rows = Math.ceil(differenceInDays(endDate, startDate) / 7)
     return (
       <div
-        className={styles.daysWrapper}
+        className={isMobile ? styles.daysWrapperMobile : styles.daysWrapper}
         style={{ gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))` }}
       >
         {days}
@@ -87,13 +95,15 @@ const Calendar = (props) => {
     const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     return (
       <div
-        className={styles.dayNamesWrapper}
+        className={
+          isMobile ? styles.dayNamesWrapperMobile : styles.dayNamesWrapper
+        }
         style={{ borderColor: borderColor }}
       >
         {days.map((value, index) => (
           <div
             className={styles.dayName}
-            style={{ borderColor: borderColor }}
+            style={{ borderColor: borderColor, color: dayNameColor }}
             key={index}
           >
             {value}
@@ -119,18 +129,28 @@ const Calendar = (props) => {
 
   return (
     <div
-      className={styles.container}
+      className={isMobile ? styles.containerMobile : styles.container}
       style={{ borderColor: borderColor }}
-      breakpoint={mobileBreakpoint}
     >
-      <div className={styles.header} style={{ borderColor: borderColor }}>
+      <div
+        className={isMobile ? styles.headerMobile : styles.header}
+        style={{ borderColor: borderColor }}
+      >
         <div className={styles.navButtonLeft} onClick={() => prevMonth()}>
           {previousButton || '<'}
         </div>
-        <div className={styles.navButtonRight} onClick={() => nextMonth()}>
+        <div
+          className={
+            isMobile ? styles.navButtonRightMobile : styles.navButtonRight
+          }
+          onClick={() => nextMonth()}
+        >
           {nextButton || '>'}
         </div>
-        <div className={styles.month}>
+        <div
+          className={isMobile ? styles.monthMobile : styles.month}
+          style={{ color: headerColor }}
+        >
           {format(currentMonth, headerDateFormat)}
         </div>
       </div>

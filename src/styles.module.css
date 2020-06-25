@@ -11,39 +11,6 @@
   height: 100%;
   grid-template-rows: 60px 20px minmax(0, 1fr);
   border-left: 1px solid;
-
-  /*@media only screen and (max-width: 900px) {
-      height: auto;
-      ${DaysWrapper} {
-        display: flex;
-        flex-direction: column;
-      }
-
-      ${DayNamesWrapper} {
-        visibility: hidden;
-      }
-
-      ${Day} {
-        overflow: initial;
-        min-height: 60px;
-      }
-    
-    ${NavButtonRight} {
-        grid-column: 3;
-    }
-    
-    ${Month} {
-        grid-column: 2;
-        grid-row: 1;
-        text-align: center;
-        margin: 0;
-    }
-    
-    ${Header} {
-        grid-template-columns: 48px auto 48px;
-    }
-    
-  }*/
 }
 
 .header {
@@ -57,7 +24,6 @@
 }
 
 .month {
-  color: #3c4043;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: 0;
@@ -94,7 +60,6 @@
 }
 
 .dayName {
-  color: #70757a;
   font-size: 11px;
   font-weight: 500;
   line-height: 20px;
@@ -127,4 +92,44 @@
   color: #fff;
   background: #1a73e8;
   border-radius: 50%;
+}
+
+.containerMobile {
+  composes: container;
+  overflow: scroll;
+}
+
+.daysWrapperMobile {
+  composes: daysWrapper;
+  display: flex;
+  flex-direction: column;
+}
+
+.dayNamesWrapperMobile {
+  composes: dayNamesWrapper;
+  visibility: hidden;
+}
+
+.dayMobile {
+  composes: day;
+  overflow: initial;
+  min-height: 60px;
+}
+
+.navButtonRightMobile {
+  composes: navButtonRight;
+  grid-column: 3;
+}
+
+.monthMobile {
+  composes: month;
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.headerMobile {
+  composes: header;
+  grid-template-columns: 48px auto 48px;
 }
