@@ -98,6 +98,7 @@ For date formating please refer to the [date-fns](https://date-fns.org/v1.28.5/d
 - Remove styled-components dependency.
 - Previously only the content of the cell could be controlled and not the header, now the render callback allows you to render the whole cell.
 - Removed props for formatting the header of the cell since now you can render your own header with your own styles.
+- Changed mobileBreakpoint by isMobile for more control on when to change to mobile styles
 
 ### 1.0.3
 
